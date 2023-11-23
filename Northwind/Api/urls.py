@@ -5,7 +5,7 @@ from Api import views
 urlpatterns = [
     #Customers
     path('customers/', views.customers),
-    path('customers/<int:customerid>/', views.customer),
+    path('customers/<str:customerid>/', views.customer),
 
     #Suppliers
     path('suppliers/', views.suppliers),
@@ -29,5 +29,14 @@ urlpatterns = [
 
     #Employees
     path('employees/', views.employees),
-    path('employees/<int:employeeid>/', views.employee)
+    path('employees/<int:employeeid>/', views.employee),
+
+    #Ejemplos y Pruebas
+    path('FechaMayor/', views.FechaMayor),
+    path('FechaMenor/', views.FechaMenor),
+    path('FechaRango/', views.FechaRango),
+    path('EmpiezaCon/', views.EmpiezaCon),
+    path('TerminaCon/', views.TerminaCon),
+    path('Ordenado/', views.Ordenado),
+    path('OrdenadoAlReves/', views.OrdenadoAlReves),
 ]

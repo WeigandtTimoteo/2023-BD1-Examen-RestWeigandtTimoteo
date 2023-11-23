@@ -35,8 +35,8 @@ class CategoriesSerializer(serializers.ModelSerializer):
 
 # Products
 class ProductsSerializer(serializers.ModelSerializer):
-    supplierid = SuppliersSerializer(many=False)
     categoryid = CategoriesSerializer(many=False)
+    supplierid = SuppliersSerializer(many=False)
     class Meta:
         model = Products
         fields = '__all__'
@@ -50,14 +50,13 @@ class OrdersSerializer(serializers.ModelSerializer):
         model = Orders
         fields = '__all__'
 
-class SuppliersSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Suppliers
-        fields = '__all__'
-
 #Order Details
 class OrderDetailsSerializer(serializers.ModelSerializer):
     productid = ProductsSerializer(many=False)
     class Meta:
         model = OrderDetails
         fields = '__all__'
+
+#----------------------------------------------------
+# Pruebas y Ejemplos
+#----------------------------------------------------
