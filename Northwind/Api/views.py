@@ -320,3 +320,12 @@ def OrderByReverse(request):
     customers = Customers.objects.all().order_by('-contactname')
     serializer = CustomersSerializer(customers, many=True)
     return Response(serializer.data)
+
+#Filtros por keys (ejemplo de suppliers dandole una city mediante url)
+
+
+#ciudad = request.GET.get('city')
+#        if ciudad:
+#            suppliers = Suppliers.objects.filter(city=ciudad)
+#        else:
+#            suppliers = Suppliers.objects.all()
