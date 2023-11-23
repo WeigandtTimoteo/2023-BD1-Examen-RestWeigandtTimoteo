@@ -124,7 +124,7 @@ def category(request, categoryid):
 
 # CRUD Products
 @api_view(['GET', 'POST'])
-def products (request):
+def products(request):
     if request.method == 'GET':
         products = Products.objects.all()
         serializer = ProductsSerializer(products, many=True)
@@ -138,9 +138,9 @@ def products (request):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def product (request, productid):
+def product(request, productid):
     try:
-        proyecto = Products.objects.get(productid=productid)
+        product = Products.objects.get(productid=productid)
     except Products.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -280,43 +280,43 @@ def employee(request, employeeid):
 #----------------------------------------------------
 
 @api_view(['GET'])
-def FechaMayor(request):
+def MayorAFecha(request):
     orders = Orders.objects.filter(orderdate__gt="1996-12-24")
     serializer = OrdersSerializer(orders, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
-def FechaMenor(request):
+def MenorAFecha(request):
     orders = Orders.objects.filter(orderdate__lt="1996-12-24")
     serializer = OrdersSerializer(orders, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
-def FechaRango(request):
+def EntreFechas(request):
     orders = Orders.objects.filter(orderdate__range=("1996-12-24","1997-1-1"))
     serializer = OrdersSerializer(orders, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
-def EmpiezaCon(request):
+def StartsWith(request):
     customers = Customers.objects.filter(contactname__startswith="A")
     serializer = CustomersSerializer(customers, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
-def TerminaCon(request):
+def EndsWith(request):
     customers = Customers.objects.filter(contactname__endswith="a")
     serializer = CustomersSerializer(customers, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
-def Ordenado(request):
+def OrderBy(request):
     customers = Customers.objects.all().order_by('contactname')
     serializer = CustomersSerializer(customers, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
-def OrdenadoAlReves(request):
+def OrderByReverse(request):
     customers = Customers.objects.all().order_by('-contactname')
     serializer = CustomersSerializer(customers, many=True)
     return Response(serializer.data)

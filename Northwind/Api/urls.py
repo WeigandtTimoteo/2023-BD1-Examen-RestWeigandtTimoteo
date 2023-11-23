@@ -32,11 +32,11 @@ urlpatterns = [
     path('employees/<int:employeeid>/', views.employee),
 
     #Ejemplos y Pruebas
-    path('FechaMayor/', views.FechaMayor),
-    path('FechaMenor/', views.FechaMenor),
-    path('FechaRango/', views.FechaRango),
-    path('EmpiezaCon/', views.EmpiezaCon),
-    path('TerminaCon/', views.TerminaCon),
-    path('Ordenado/', views.Ordenado),
-    path('OrdenadoAlReves/', views.OrdenadoAlReves),
+    path('prueba/MayorAFecha/', views.MayorAFecha),
+    path('prueba/MenorAFecha/', views.MenorAFecha),
+    path('prueba/EntreFechas/', views.EntreFechas),
+    path('prueba/StartsWith/', views.StartsWith),
+    path('prueba/EndsWith/', views.EndsWith),
+    path('prueba/OrderBy/', views.OrderBy),
+    path('prueba/OrderByReverse/', views.OrderByReverse)
 ]
