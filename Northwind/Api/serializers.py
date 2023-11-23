@@ -58,5 +58,10 @@ class OrderDetailsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 #----------------------------------------------------
-# Pruebas y Ejemplos
+# Examen
 #----------------------------------------------------
+
+class Punto1Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employees
+        fields = '__all__'

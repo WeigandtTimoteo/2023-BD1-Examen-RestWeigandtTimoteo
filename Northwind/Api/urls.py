@@ -38,5 +38,8 @@ urlpatterns = [
     path('prueba/StartsWith/', views.StartsWith),
     path('prueba/EndsWith/', views.EndsWith),
     path('prueba/OrderBy/', views.OrderBy),
-    path('prueba/OrderByReverse/', views.OrderByReverse)
+    path('prueba/OrderByReverse/', views.OrderByReverse),
+
+    #Path del examen
+    path('examen/punto1', views.punto1)
 ]

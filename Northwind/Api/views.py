@@ -216,7 +216,7 @@ def orderdetails(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def orderdetail(request, orderid):
     try:
-        orderdetail = OrderDetails.objects.get(orderid=orderid)
+        orderdetails = OrderDetails.objects.get(orderid=orderid)
     except OrderDetails.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -273,6 +273,39 @@ def employee(request, employeeid):
     elif request.method == 'DELETE':
         employee.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+#----------------------------------------------------
+# Examen
+#----------------------------------------------------
+
+@api_view(['GET'])
+def punto1(request):
+    if request.method == 'GET':
+        idcat = request.GET.get('categoryid')
+        cantesperada = request.GET.get('ventasmin')
+        mingan = 0
+        if idcat:
+            products = Products.objects.filter(categoryid=idcat)
+            for product in products:
+                idprod = product.productid
+                orderdetails = OrderDetails.objects.filter(productid=idprod)
+                for orderdetail in orderdetails:
+                    idorder = orderdetail.orderid
+                    orders = Orders.objects.filter(orderid=idorder)
+                    mingan += orderdetail.unitprice * orderdetail.quantity
+                    for order in orders:
+                        idemp = order.employeeid
+                        employees = Employees.objects.filter(employeeid=idemp)
+                        employees1 = employees1.objects.filter(hiredate__range=("2023-8-1", "2023-12-1"))
+            employees2 = employees.objects.filter(mingan>=cantesperada)
+            serializer = Punto1Serializer(employees2, many=True)
+            return Response(serializer.data)
+        else:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
 
 
 #----------------------------------------------------
